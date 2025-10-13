@@ -1,4 +1,4 @@
-# pizzeriaweb
+# cucina-flegrea
 progetto gruppo a b c
 ogni sviluppatore deve aggiungere due portate nel proprio menu'
 -sviluppatore a: assegnato al menuù pizze
