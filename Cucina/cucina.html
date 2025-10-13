@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cucina Flegrea - Il Sapore Autentico della Tradizione</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c1810;
+            background-color: #faf8f5;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #c41e3a 0%, #8b1538 100%);
+            color: white;
+            padding: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="1.5" fill="white" opacity="0.1"/><circle cx="40" cy="70" r="1" fill="white" opacity="0.1"/></svg>');
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo-text h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo-text p {
+            margin: 0;
+            font-size: 12px;
+            opacity: 0.9;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-menu a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(rgba(44, 24, 16, 0.7), rgba(44, 24, 16, 0.7)),
+                        url('pozzuoli-panorama.jpg'),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23d4a574" width="1200" height="600"/><path fill="%23c41e3a" opacity="0.1" d="M0 400 Q300 350 600 400 T1200 400 V600 H0 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero:hover::after {
+            content: '';
+            opacity: 0;
+        }
+
+        .hero-content h2 {
+            font-size: 48px;
+            margin: 0 0 20px 0;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin: 0;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+
+        .hero-icons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: #c41e3a;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #8b1538;
+        }
+
+        /* Menu Sections */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-image {
+            height: 200px;
+            background: linear-gradient(45deg, #d4a574, #c19a6b);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .menu-content {
+            padding: 30px;
+        }
+
+        .menu-content h3 {
+            color: #c41e3a;
+            font-size: 24px;
+            margin: 0 0 15px 0;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dotted #ddd;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .item-info h4 {
+            margin: 0 0 5px 0;
+            color: #2c1810;
+            font-size: 16px;
+        }
+
+        .item-info p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .item-price {
+            color: #c41e3a;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Specialty Section */
+        .specialty-showcase {
+            background: linear-gradient(135deg, #2c1810 0%, #1a0f0a 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .specialty-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .specialty-image {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 30px;
+            background: linear-gradient(45deg, #c41e3a, #8b1538);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Desserts Section */
+        .desserts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .dessert-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .dessert-image {
+            height: 180px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .dessert-content {
+            padding: 20px;
+        }
+
+        .dessert-content h4 {
+            color: #c41e3a;
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+
+        .dessert-content p {
+            color: #666;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Icons */
+        .icon-set {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .icon-item {
+            text-align: center;
+            color: #c41e3a;
+        }
+
+        .icon-item svg {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+
+        .icon-item span {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c1810;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .footer p {
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-menu {
+                gap: 20px;
+            }
+
+            .hero-content h2 {
+                font-size: 32px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .icon-set {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 50 50" fill="none">
+                    <path d="M10 42 L15 30 L20 24 L25 18 L30 24 L35 30 L40 42 Z" fill="white" opacity="0.9"/>
+                    <path d="M20 24 L25 18 L30 24 L25 21 Z" fill="#ffd700"/>
+                    <circle cx="25" cy="19" r="2" fill="#ffd700" opacity="0.8"/>
+                    <path d="M5 45 Q15 40 25 45 T45 45" stroke="#4682b4" stroke-width="2" fill="none" opacity="0.6"/>
+                </svg>
+                <div class="logo-text">
+                    <h1>CUCINA FLEGREA</h1>
+                    <p>Tradizione Campana</p>
+                    <p style="font-size: 10px; margin-top: 5px; opacity: 0.8;">Via Napoli, 123 - Pozzuoli (NA) | Tel: 081 593 1785</p>
+                </div>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#antipasti">Antipasti</a></li>
+                    <li><a href="#primi">Primi Piatti</a></li>
+                    <li><a href="#specialita">Specialità</a></li>
+                    <li><a href="#dolci">Dolci</a></li>
+                    <li><a href="#bevande">Bevande</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Il sapore autentico della tradizione</h2>
+            <p>Scopri i sapori autentici dei Campi Flegrei nel cuore della Campania</p>
+
+        </div>
+    </section>
+
+    <!-- Antipasti Campani Section -->
+    <section id="antipasti" class="section">
+        <div class="container">
+            <h2 class="section-title">Antipasti Campani</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="menu-image" style="background: url('antipasti-di-terra.png') center/cover, linear-gradient(45deg, #d4a574, #c19a6b); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; text-align: center; padding: 20px;">
+                    </div>
+                    <div class="menu-content">
+                        <h3>Antipasti di Terra</h3>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Tagliere di Salumi e Formaggi</h4>
+                                <p>Selezione di salumi campani e formaggi locali</p>
+                            </div>
+                            <span class="item-price">€10</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Bruschette Miste</h4>
+                                <p>Bruschette con pomodoro, mozzarella e basilico</p>
+                            </div>
+                            <span class="item-price">€5</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Antipasto della Casa</h4>
+                                <p>Verdure sott'olio, olive, mozzarella di bufala</p>
+                            </div>
+                            <span class="item-price">€8</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Parmigiana di Melanzane</h4>
+                                <p>Melanzane a strati con pomodoro e mozzarella</p>
+                            </div>
+                            <span class="item-price">€6</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-image" style="background: url('antipasti-di-mare.png') center/cover, linear-gradient(45deg, #4682B4, #5F9EA0); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; text-align: center; padding: 20px;">
+                    </div>
+                    <div class="menu-content">
+                        <h3>Antipasti di Mare</h3>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Crudo di Ricciola</h4>
+                                <p>Ricciola cruda con limone, olio e pepe rosa</p>
+                            </div>
+                            <span class="item-price">€12</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Antipasto di Mare Misto</h4>
+                                <p>Polpo, gamberi, alici marinate e baccalà mantecato</p>
+                            </div>
+                            <span class="item-price">€14</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Impepata di Cozze</h4>
+                                <p>Cozze fresche con aglio, prezzemolo e pepe</p>
+                            </div>
+                            <span class="item-price">€9</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Alici di Cetara</h4>
+                                <p>Alici di Cetara con limone e olio extravergine</p>
+                            </div>
+                            <span class="item-price">€7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Primi Piatti Section -->
+    <section id="primi" class="section">
+        <div class="container">
+            <h2 class="section-title">Primi Piatti</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="menu-image" style="background: url('pasta-tradizionale.png') center/cover, linear-gradient(45deg, #F4A460, #DEB887); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; text-align: center; padding: 20px;">
+                    </div>
+                    <div class="menu-content">
+                        <h3>Pasta Tradizionale</h3>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Gnocchi alla Sorrentina</h4>
+                                <p>Gnocchi di patate con pomodoro, mozzarella e basilico</p>
+                            </div>
+                            <span class="item-price">€9</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Pasta alla Genovese</h4>
+                                <p>Pasta con ragù di cipolle e carne di manzo</p>
+                            </div>
+                            <span class="item-price">€10</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Spaghetti alle Vongole</h4>
+                                <p>Spaghetti con vongole veraci, aglio, olio e prezzemolo</p>
+                            </div>
+                            <span class="item-price">€12</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Pasta al Ragù</h4>
+                                <p>Pasta con ragù di carne napoletano cotto a fuoco lento</p>
+                            </div>
+                            <span class="item-price">€8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-image" style="background: url('rustici-e-specialita.png') center/cover, linear-gradient(45deg, #CD853F, #D2691E); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; text-align: center; padding: 20px;">
+                    </div>
+                    <div class="menu-content">
+                        <h3>Rustici e Specialità</h3>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Casatiello Napoletano</h4>
+                                <p>Pane rustico con salumi, formaggi e uova</p>
+                            </div>
+                            <span class="item-price">€7</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Frittatina di Pasta</h4>
+                                <p>Frittata con spaghetti, uova e formaggio</p>
+                            </div>
+                            <span class="item-price">€5</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Pizza Fritta</h4>
+                                <p>Pizza fritta ripiena di ricotta, cicoli e pepe</p>
+                            </div>
+                            <span class="item-price">€4</span>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Pizza di Scarole</h4>
+                                <p>Pizza rustica con scarole, olive, capperi e acciughe</p>
+                            </div>
+                            <span class="item-price">€6</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialità Flegree Section -->
+    <section id="specialita" class="specialty-showcase">
+        <div class="container">
+            <div class="specialty-content">
+                <h2 style="color: white; font-size: 36px; margin-bottom: 30px;">Cucina Flegrea: Il Menù di Terra e Mare</h2>
+                <div class="specialty-image" style="background: url('ciarella-flegrea.png') center/cover, linear-gradient(45deg, #c41e3a, #8b1538); color: white; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: bold; text-align: center; padding: 20px;">
+                </div>
+                <h3 style="color: #ffd700; font-size: 24px; margin-bottom: 20px;">Ciarella Flegrea</h3>
+                <p style="font-size: 18px; margin-bottom: 20px; opacity: 0.9;">La tradizionale zuppa di pesce dei Campi Flegrei, preparata con il pescato del giorno e servita con pane tostato all'aglio</p>
+                <div style="color: #ffd700; font-size: 24px; font-weight: bold; margin-bottom: 30px;">€15</div>
+                <div class="menu-grid" style="margin-top: 50px;">
+                    <div class="menu-card">
+                        <div class="menu-image" style="background: url('secondi-di-mare.png') center/cover, linear-gradient(45deg, #4682B4, #20B2AA); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; text-align: center; padding: 20px;">
+                        </div>
+                        <div class="menu-content">
+                            <h3>Secondi di Mare</h3>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <h4>Pesce all'Acqua Pazza</h4>
+                                    <p>Pesce fresco in guazzetto con pomodorini e olive</p>
+                                </div>
+                                <span class="item-price">€16</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <h4>Grigliata Mista di Pesce</h4>
+                                    <p>Selezione di pesce fresco alla griglia con limone</p>
+                                </div>
+                                <span class="item-price">€18</span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-image" style="background: url('secondi-di-terra.png') center/cover, linear-gradient(45deg, #8B4513, #A0522D); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; text-align: center; padding: 20px;">
+                        </div>
+                        <div class="menu-content">
+                            <h3>Secondi di Terra</h3>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <h4>Coniglio all'Ischitana</h4>
+                                    <p>Coniglio in umido con pomodori e erbe aromatiche</p>
+                                </div>
+                                <span class="item-price">€14</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <h4>Agnello alle Erbe</h4>
+                                    <p>Agnello al forno con patate e rosmarino</p>
+                                </div>
+                                <span class="item-price">€16</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dolci Section -->
+    <section id="dolci" class="section">
+        <div class="container">
+            <h2 class="section-title">I Dolci della Nostra Terra</h2>
+            <div class="desserts-grid">
+                <div class="dessert-card">
+                    <div class="dessert-image" style="background: url('baba-al-rum.png') center/cover, linear-gradient(45deg, #DEB887, #CD853F); color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; text-align: center; padding: 15px;">
+                    </div>
+                    <div class="dessert-content">
+                        <h4>Babà al Rum</h4>
+                        <p>Soffice dolce lievitato bagnato nel rum con panna</p>
+                        <div style="margin-top: 15px; color: #c41e3a; font-weight: bold; font-size: 18px; text-align: center;">€3</div>
+                    </div>
+                </div>
+                <div class="dessert-card">
+                    <div class="dessert-image" style="background: url('pastiera-napoletana.png') center/cover, linear-gradient(45deg, #F5DEB3, #DEB887); color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; text-align: center; padding: 15px;">
+                    </div>
+                    <div class="dessert-content">
+                        <h4>Pastiera Napoletana</h4>
+                        <p>Il dolce tradizionale di Pasqua con ricotta, grano e canditi</p>
+                        <div style="margin-top: 15px; color: #c41e3a; font-weight: bold; font-size: 18px; text-align: center;">€4</div>
+                    </div>
+                </div>
+                <div class="dessert-card">
+                    <div class="dessert-image" style="background: url('sfogliatella-riccia.png') center/cover, linear-gradient(45deg, #DEB887, #F4A460); color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; text-align: center; padding: 15px;">
+                    </div>
+                    <div class="dessert-content">
+                        <h4>Sfogliatella Riccia</h4>
+                        <p>Croccante pasta sfoglia ripiena di ricotta e semolino</p>
+                        <div style="margin-top: 15px; color: #c41e3a; font-weight: bold; font-size: 18px; text-align: center;">€3</div>
+                    </div>
+                </div>
+                <div class="dessert-card">
+                    <div class="dessert-image" style="background: url('tiramisu.png') center/cover, linear-gradient(45deg, #8B4513, #CD853F); color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; text-align: center; padding: 15px;">
+                    </div>
+                    <div class="dessert-content">
+                        <h4>Tiramisù</h4>
+                        <p>Il classico dolce al cucchiaio con mascarpone e caffè</p>
+                        <div style="margin-top: 15px; color: #c41e3a; font-weight: bold; font-size: 18px; text-align: center;">€4</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bevande Section -->
+    <section id="bevande" class="section" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white;">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Le Nostre Bevande</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="menu-image" style="background: url('birre.png') center/cover, linear-gradient(45deg, #FFD700, #FFA500); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; text-align: center; padding: 20px;">
+                    </div>
+                    <div class="menu-content">
+                        <h3>Birre</h3>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Birra alla Spina</h4>
+                                <p>Birra fresca alla spina (piccola/media/grande)</p>
+                            </div>
+                            <span class="item-price">€3/4/5</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Birra in Bottiglia</h4>
+                                <p>Selezione di birre nazionali e internazionali</p>
+                            </div>
+                            <span class="item-price">€4</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Birra Artigianale</h4>
+                                <p>Birre artigianali locali e di qualità</p>
+                            </div>
+                            <span class="item-price">€6</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-image" style="background: url('vini.png') center/cover, linear-gradient(45deg, #722F37, #8B0000); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; text-align: center; padding: 20px;">
+                    </div>
+                    <div class="menu-content">
+                        <h3>Vini</h3>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Vino della Casa</h4>
+                                <p>Vino rosso/bianco della casa (bicchiere/caraffa)</p>
+                            </div>
+                            <span class="item-price">€3/12</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Falanghina dei Campi Flegrei</h4>
+                                <p>Vino bianco locale DOC</p>
+                            </div>
+                            <span class="item-price">€18</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Piedirosso Flegrei</h4>
+                                <p>Vino rosso tipico della zona</p>
+                            </div>
+                            <span class="item-price">€20</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-image" style="background: url('bevande-e-drink.png') center/cover, linear-gradient(45deg, #4682B4, #87CEEB); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; text-align: center; padding: 20px;">
+                    </div>
+                    <div class="menu-content">
+                        <h3>Bevande e Drink</h3>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Acqua Naturale/Frizzante</h4>
+                                <p>Acqua in bottiglia da 0,5L o 1L</p>
+                            </div>
+                            <span class="item-price">€2/3</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Bibite Gasate</h4>
+                                <p>Coca Cola, Fanta, Sprite, Aranciata</p>
+                            </div>
+                            <span class="item-price">€3</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Caffè Napoletano</h4>
+                                <p>Espresso, cappuccino, caffè macchiato</p>
+                            </div>
+                            <span class="item-price">€1,5</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>Limoncello della Casa</h4>
+                                <p>Limoncello artigianale dei Campi Flegrei</p>
+                            </div>
+                            <span class="item-price">€4</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Icons Section -->
+    <section class="section" style="background: #f8f6f3;">
+        <div class="container">
+            <div class="icon-set">
+                <div class="icon-item">
+                    <svg viewBox="0 0 40 40" fill="none">
+                        <!-- Quality star -->
+                        <path d="M20 4 L24 14 L35 14 L26 22 L30 32 L20 26 L10 32 L14 22 L5 14 L16 14 Z" fill="currentColor"/>
+                        <!-- Inner star highlight -->
+                        <path d="M20 8 L22 16 L28 16 L23 20 L25 28 L20 24 L15 28 L17 20 L12 16 L18 16 Z" fill="white" opacity="0.3"/>
+                    </svg>
+                    <span>Qualità</span>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 40 40" fill="none">
+                        <!-- Traditional building/temple -->
+                        <rect x="8" y="28" width="24" height="8" fill="currentColor"/>
+                        <rect x="10" y="18" width="4" height="10" fill="currentColor"/>
+                        <rect x="14" y="18" width="4" height="10" fill="currentColor"/>
+                        <rect x="18" y="18" width="4" height="10" fill="currentColor"/>
+                        <rect x="22" y="18" width="4" height="10" fill="currentColor"/>
+                        <rect x="26" y="18" width="4" height="10" fill="currentColor"/>
+                        <!-- Roof -->
+                        <path d="M6 18 L20 8 L34 18 Z" fill="currentColor"/>
+                        <!-- Roof highlight -->
+                        <path d="M8 17 L20 10 L32 17 Z" fill="white" opacity="0.2"/>
+                    </svg>
+                    <span>Tradizione</span>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 40 40" fill="none">
+                        <!-- Family figures -->
+                        <!-- Father -->
+                        <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                        <rect x="9" y="15" width="6" height="8" rx="1" fill="currentColor"/>
+                        <rect x="10" y="23" width="2" height="6" fill="currentColor"/>
+                        <rect x="14" y="23" width="2" height="6" fill="currentColor"/>
+                        <!-- Mother -->
+                        <circle cx="20" cy="12" r="3" fill="currentColor"/>
+                        <path d="M17 15 Q17 18 20 18 Q23 18 23 15 L23 23 L17 23 Z" fill="currentColor"/>
+                        <rect x="18" y="23" width="2" height="6" fill="currentColor"/>
+                        <rect x="20" y="23" width="2" height="6" fill="currentColor"/>
+                        <!-- Child -->
+                        <circle cx="28" cy="15" r="2.5" fill="currentColor"/>
+                        <rect x="25.5" y="17.5" width="5" height="6" rx="1" fill="currentColor"/>
+                        <rect x="26.5" y="23.5" width="1.5" height="4" fill="currentColor"/>
+                        <rect x="29" y="23.5" width="1.5" height="4" fill="currentColor"/>
+                        <!-- Heart above family -->
+                        <path d="M20 8 Q18 6 16 8 Q16 10 20 12 Q24 10 24 8 Q22 6 20 8 Z" fill="currentColor" opacity="0.6"/>
+                    </svg>
+                    <span>Famiglia</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Cucina Flegrea - Il sapore autentico della tradizione campana</p>
+            <p>Via Napoli, 123 - Pozzuoli (NA) | Tel: 081 593 1785</p>
+        </div>
+    </footer>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98de07bfe6a9ea6a',t:'MTc2MDM1MDA0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
