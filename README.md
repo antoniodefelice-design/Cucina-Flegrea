@@ -7,7 +7,11 @@ https://antoniodefelice-design.github.io/Cucina-Flegrea/
 
 # gruppo
 1: ANTONIO DE FELICE
+
 2: GUIDO PIO RICCARDI
+
 3: ARYAN JANGID
+
 4: PAOLO FUMO
+
 5: MARISOL LUCIGNANO
